@@ -1,8 +1,22 @@
-.App-bg{
+.contrainer{
+    max-width: 1080 px;
+    margin: 0 auto;
+}
+.home-bg{
     height: max-content;
     background-color: #fffee5;
     background-image: url('https://i.pinimg.com/736x/8b/42/d7/8b42d7115f6ff264fa3f263bd0d8608b.jpg');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+}
+.home-con{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 960 px;
+}
+.home-text{
+    color: blanchedalmond;
+    text-align: center;
 }

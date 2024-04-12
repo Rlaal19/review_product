@@ -1,15 +1,15 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 function Navbar() {
     return (
-        <div className=' bg-pink-300 p-4'>
-            <div className='flex items-center justify-between'>
-                <div>Rlaal</div>
-                <div className='md:flex space-x-4'>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Product</a></li>
-                    <li><a href="#">Post</a></li>
-                    <li><a href="#" className=' bg-black rounded-lg'>login</a></li>
+        <div className=' bg-success p-4 rounded-xl'>
+            <div className='flex items-center justify-between font-mono font-bold'>
+                <div>Rlaal^_^</div>
+                <div className='md:flex space-x-4 font-mono font-bold'>
+                    <li><Link to="/product">Product</Link></li>
+                    <li><Link to="/post">Post</Link></li>
+                    <li><Link to="/contect">Contect</Link></li>
                 </div>
             </div>
         </div>
