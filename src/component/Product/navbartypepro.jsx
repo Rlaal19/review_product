@@ -9,7 +9,7 @@ const Navbartypepro = () => {
             Type Product
         </div>
         <div><FontAwesomeIcon icon={faBasketShopping} className=' text-xl mr-2' />Skincare</div>
-        <div>Cusmetic</div>
+        <div>Cosmetic</div>
         <div>Hair</div>
         <div>Farshion</div>
         <div>Snacks</div>
