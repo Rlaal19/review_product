@@ -18,7 +18,7 @@ const Contentcontrainer = ({
           data.map(({score,title,description,shoplink,picture}, index) => (
             <div
             key ={`${SECTION_ID}-${index}`}
-              className={`grid grid-cols-[27%_73%] transition-all rounded-lg py-5 ${isMouseEnter[`${SECTION_ID}-${index}`] ? "bg-pink-200" : ""} `}
+              className={`grid grid-cols-[27%_73%] transition-all rounded-lg py-5 ${isMouseEnter[`${SECTION_ID}-${index}`] ? "bg-pink-200 bg-opacity-75 " : ""} `}
               onMouseEnter={() => setIsMouseEnter({ [`${SECTION_ID}-${index}`]: true })}
               onMouseLeave={() => setIsMouseEnter({ [`${SECTION_ID}-${index}`]: false })}
             >

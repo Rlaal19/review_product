@@ -1,5 +1,5 @@
 import React from 'react'
-import Navbartypepro from './navbartypepro'
+import Navbartypepro from './NavbarProduct/navbartypepro'
 import Product from './product'
 
 function View() {

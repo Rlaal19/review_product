@@ -5,7 +5,7 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   daisyui: {
-    themes: [
+    themes: [ "valentine",
       {
         mytheme: {
         
@@ -26,6 +26,8 @@ export default {
           "warning": "#d4af00",
                   
           "primarybg": "#ff7087",
+
+          "star": "#ff7087",
         },
       },
     ],

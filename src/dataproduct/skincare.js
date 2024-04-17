@@ -1,6 +1,6 @@
 export const data = [
     {
-        score:"5/5",
+        score:"4",
         title:"Red Gel",
         description:[
             "ช่วยรักษารอยดำรอยแดงที่เกิดจากสิว"
@@ -13,7 +13,7 @@ export const data = [
     },
 
     {
-        score:"5/5",
+        score:"3",
         title:"Red Gel",
         description:[
             "ช่วยรักษารอยดำรอยแดงที่เกิดจากสิว"
