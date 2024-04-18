@@ -1,21 +1,37 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 import './register.css'
+import axios from '../../../../backend/node_modules/axios'
 
 const Register = () => {
+  const [name, setName] = useState()
+  const [email, setEmail] = useState()
+  const [password, setPassword] = useState()
+  const handleSubmit = (e) =>{
+    e.preventDefault()
+    axios.post('http://localhost:3001/register',{name,email,password})
+    .then(result => console.log(result))
+    .catch(err => console.log(err))
+  }
   return (
     <div className='wrapper'>
-      <form action="">
+      <form onSubmit={handleSubmit}>
         <h1>Sign up</h1>
         <div className='inputbox'>
-          <input type="text" placeholder="Username" className="input input-bordered input-warning w-full max-w-xs" />
+          <input type="text" placeholder="Enter Username" className="input input-bordered input-warning w-full max-w-xs"
+            onChange={(e) => setName(e.target.value)}
+           />
           </div>
         <div className='inputbox'>
-          <input type="text" placeholder="E-mail" className="input input-bordered input-warning w-full max-w-xs" />
+          <input type="email" placeholder="Enter E-mail" className="input input-bordered input-warning w-full max-w-xs"
+            onChange={(e) => setEmail(e.target.value)}
+          />
           </div>
 
         <div className='inputbox'>
-          <input type="text" placeholder="Password" className="input input-bordered input-warning w-full max-w-xs" />
+          <input type="password" placeholder="Enter Password" className="input input-bordered input-warning w-full max-w-xs" 
+            onChange={(e) => setPassword(e.target.value)}
+          />
           </div>
 
         <div className='remember'>
