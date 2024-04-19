@@ -10,6 +10,22 @@ app.use(cors())
 
 mongoose.connect("mongodb+srv://admin:2319@cluster0.kdh9hcl.mongodb.net/review-product");
 
+app.post('/login', (req, res) =>{
+    const{email,password} = req.body;
+    EmployeeModel.findOne({email,password})
+    .then(user =>{
+        if(user){
+            if(user.password === password){
+                res.json("Success")
+            }else{
+                res.json("Pass word is not correct")
+            }
+        }else{
+            res.json("No record exited")
+        }
+    })
+})
+
 app.post('/register', (req, res) =>{
     EmployeeModel.create(req.body)
     .then(employees => res.json(employees))
@@ -18,5 +34,5 @@ app.post('/register', (req, res) =>{
 })
 
 app.listen(3001, () =>{
-    console.log("server is runnong")
+    console.log("server is running")
 })

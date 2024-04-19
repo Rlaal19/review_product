@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Post() {
+function Showpost() {
   return (
     <div>
       
@@ -8,4 +8,4 @@ function Post() {
   )
 }
 
-export default Post
+export default Showpost

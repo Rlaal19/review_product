@@ -1,21 +1,41 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './login.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Link } from 'react-router-dom';
-import { faEnvelope, faKey, faUser } from '@fortawesome/free-solid-svg-icons';
+import { Link, useNavigate } from 'react-router-dom';
+import { faKey, faUser } from '@fortawesome/free-solid-svg-icons';
+import axios from '../../../../backend/node_modules/axios'
 
 const Login = () => {
+  const [email, setEmail] = useState()
+  const [password, setPassword] = useState()
+  const navigate = useNavigate()
+
+  const handleSubmit = (e) =>{
+    e.preventDefault()
+    axios.post('http://localhost:3001/login',{email,password})
+    .then(result => {
+      console.log(result)
+      if(result.data === "Success"){
+        navigate('/showpost')
+      }
+    })
+    .catch(err => console.log(err))
+  }
   return (
     <div className='wrapper'>
-      <form action="">
+      <form onSubmit={handleSubmit}>
         <h1>Login</h1>
         <div className='inputbox'>
-          <input type="text" placeholder="Username" className="input input-bordered input-warning w-full max-w-xs" />
+          <input type="email" placeholder="Email" className="input input-bordered input-warning w-full max-w-xs" 
+            onChange={(e) => setEmail(e.target.value)}
+          />
           <FontAwesomeIcon className='icon' icon={faUser} size="lg" />
           </div>
 
         <div className='inputbox'>
-          <input type="text" placeholder="Password" className="input input-bordered input-warning w-full max-w-xs" />
+          <input type="password" placeholder="Password" className="input input-bordered input-warning w-full max-w-xs" 
+            onChange={(e) => setPassword(e.target.value)}
+          />
           <FontAwesomeIcon className='icon' icon={faKey} size="lg" />
           </div>
 
