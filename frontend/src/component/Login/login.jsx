@@ -3,20 +3,21 @@ import './login.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link, useNavigate } from 'react-router-dom';
 import { faKey, faUser } from '@fortawesome/free-solid-svg-icons';
-import axios from '../../../../backend/node_modules/axios'
+import Axios from '../../../../backend/node_modules/axios'
 
 const Login = () => {
   const [email, setEmail] = useState()
   const [password, setPassword] = useState()
   const navigate = useNavigate()
-
+  Axios.defaults.withCredentials = true;
   const handleSubmit = (e) =>{
     e.preventDefault()
-    axios.post('http://localhost:3001/login',{email,password})
+    Axios.post('http://localhost:3001/auth/login',{email,password})
     .then(result => {
       console.log(result)
-      if(result.data === "Success"){
-        navigate('/showpost')
+      if(result.data.status){
+        alert("Login success")
+        navigate('/home')
       }
     })
     .catch(err => console.log(err))
@@ -41,7 +42,7 @@ const Login = () => {
 
         <div className='remember-forget'>
           <label><input type="checkbox"  />Remember me </label>
-          <a href="#">Forget password?</a>
+          <Link to="/forgotPassword">Forgot Password</Link>
         </div>
         <button className="btn btn-neutral">Login</button>
 

@@ -1,18 +1,22 @@
 import React, { useState } from 'react'
 import { Link , useNavigate } from 'react-router-dom';
 import './register.css'
-import axios from '../../../../backend/node_modules/axios'
+import Axios from "../../../../backend/node_modules/axios"
 
 const Register = () => {
   const [name, setName] = useState()
   const [email, setEmail] = useState()
   const [password, setPassword] = useState()
   const navigate = useNavigate()
+
   const handleSubmit = (e) =>{
     e.preventDefault()
-    axios.post('http://localhost:3001/register',{name,email,password})
+    Axios.post('http://localhost:3001/auth/register',{name,email,password})
     .then(result => {console.log(result)
-      navigate('/login')
+      if(result.data.status){
+        alert("Register success")
+        navigate('/login')
+      }
     })
     .catch(err => console.log(err))
   }
@@ -37,16 +41,13 @@ const Register = () => {
           />
           </div>
 
-        <div className='remember'>
-          <label><input type="checkbox"  />Remember me </label>
-        </div>
         <div className='signup-btn'>
             <button className="btn btn-neutral">Sign up</button> 
         </div>
         
 
         <div className='register-link'>
-        <p>You want to go to login? <Link className=' text-blue-800' to="/login">Login</Link> </p>
+        <p>You have an account? <Link className=' text-blue-800' to="/login">Login</Link> </p>
         </div>
       </form>
     </div>
