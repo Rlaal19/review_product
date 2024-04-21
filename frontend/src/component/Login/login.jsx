@@ -8,6 +8,7 @@ import Axios from '../../../../backend/node_modules/axios'
 const Login = () => {
   const [email, setEmail] = useState()
   const [password, setPassword] = useState()
+  const [message, setMessage] = useState('')
   const navigate = useNavigate()
   Axios.defaults.withCredentials = true;
   const handleSubmit = (e) =>{
@@ -18,6 +19,8 @@ const Login = () => {
       if(result.data.status){
         alert("Login success")
         navigate('/home')
+      }else{
+        alert(result.data.message);
       }
     })
     .catch(err => console.log(err))

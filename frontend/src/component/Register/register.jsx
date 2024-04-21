@@ -12,10 +12,13 @@ const Register = () => {
   const handleSubmit = (e) =>{
     e.preventDefault()
     Axios.post('http://localhost:3001/auth/register',{name,email,password})
-    .then(result => {console.log(result)
+    .then(result => {
+      console.log(result)
       if(result.data.status){
-        alert("Register success")
+        alert(result.data.message)
         navigate('/login')
+      }else{
+        alert(result.data.message);
       }
     })
     .catch(err => console.log(err))

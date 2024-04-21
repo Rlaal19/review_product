@@ -1,7 +1,15 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 
+
 function Navbar() {
+
+    // if(loggedIn){
+    //      <li><Link to="/login"><button className="btn btn-sm btn-primary text-active">Logout</button></Link></li>
+    // }
+    // if(!loggedIn){
+    //     <li><Link to="/login"><button className="btn btn-sm btn-primary text-active">Login</button></Link></li>
+    // }
     return (
         <div className="navbar bg-success rounded-lg">
             <div className="flex-1">
@@ -23,6 +31,7 @@ function Navbar() {
                         </details>
                     </li>
                     <li><Link to="/contact">Contact</Link></li>
+                    
                     <li><Link to="/login"><button className="btn btn-sm btn-primary text-active">Login</button></Link></li>
                 </ul>
             </div>

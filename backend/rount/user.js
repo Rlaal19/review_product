@@ -2,22 +2,20 @@ const express = require('express')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const EmployeeModel = require('../models/Employee')
+const PostModel = require('../models/post')
 const UserRounter = express.Router()
 
 UserRounter.post('/register', async (req, res) => {
-    const { name, email, password } = req.body;
+    const{name,email,password} =req.body
+    EmployeeModel.create(req.body).then(() =>{
+        return res.json({ status: true, message: "Recode registed" })
+    }).catch((err)=>{
+        return res.json({ status: false, message:"Please fill in complete information" })
+    })
     const user = await EmployeeModel.findOne({ email })
     if (user) {
         return res.json({ message: "User already exit" })
     }
-    const hashpassword = await bcrypt.hash(password, 10)
-    const newUser = new EmployeeModel({
-        name,
-        email,
-        password: hashpassword
-    })
-    await newUser.save()
-    return res.json({ status: true, message: "Recode registed" })
 
 })
 
@@ -37,5 +35,11 @@ UserRounter.post('/login', async (req, res) => {
     return res.json({ status: true, message: "Login successfully" })
 })
 
+UserRounter.post('/post', async (req, res) => {
+   PostModel.create(req.body)
+   .then(post => res.json(post))
+   .catch(err => res.json(err))
+
+})
 
 module.exports = UserRounter
