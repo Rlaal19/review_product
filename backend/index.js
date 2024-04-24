@@ -1,22 +1,27 @@
 const express = require("express")
 const mongoose = require('mongoose')
 const cors = require('cors')
-const cookieParser = require('cookie-parser')
-const dotenv = require('dotenv')
-dotenv.config()
-const EmployeeModel = require("./models/Employee")
+const expressSession = require('express-session')
+
 const UserRounter = require("./rount/user")
+
+mongoose.connect("mongodb+srv://admin:2319@cluster0.kdh9hcl.mongodb.net/review-product");
+const loggedIn = null
+
 
 const app = express()
 app.use(express.json())
+app.use(express.urlencoded())
+app.use(expressSession({
+    secret: "node secret"
+}))
 app.use(cors({
     origin: ["http://localhost:5173"],
     credentials: true
 }))
-app.use(cookieParser())
 app.use("/auth", UserRounter)
 
-mongoose.connect("mongodb+srv://admin:2319@cluster0.kdh9hcl.mongodb.net/review-product");
+
 
 
 

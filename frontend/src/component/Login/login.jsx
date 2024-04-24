@@ -8,23 +8,25 @@ import Axios from '../../../../backend/node_modules/axios'
 const Login = () => {
   const [email, setEmail] = useState()
   const [password, setPassword] = useState()
-  const [message, setMessage] = useState('')
   const navigate = useNavigate()
   Axios.defaults.withCredentials = true;
+
   const handleSubmit = (e) =>{
     e.preventDefault()
     Axios.post('http://localhost:3001/auth/login',{email,password})
     .then(result => {
-      console.log(result)
       if(result.data.status){
-        alert("Login success")
+        alert(result.data.message)
         navigate('/home')
+        navigate(0)
       }else{
         alert(result.data.message);
+        navigate('/login')
       }
     })
     .catch(err => console.log(err))
   }
+
   return (
     <div className='wrapper'>
       <form onSubmit={handleSubmit}>

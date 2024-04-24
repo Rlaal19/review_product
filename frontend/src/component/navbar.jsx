@@ -1,15 +1,39 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom';
+import Axios from 'axios'
 
 
-function Navbar() {
 
-    // if(loggedIn){
-    //      <li><Link to="/login"><button className="btn btn-sm btn-primary text-active">Logout</button></Link></li>
-    // }
-    // if(!loggedIn){
-    //     <li><Link to="/login"><button className="btn btn-sm btn-primary text-active">Login</button></Link></li>
-    // }
+const Navbar = () => {
+    const [loggedIn, setLoggedIn] = useState(false);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const fetchLoggedInStatus = async () => {
+            try {
+                const response = await Axios.get('http://localhost:3001/auth/section', { withCredentials: true });
+                setLoggedIn(response.data.loggedIn);
+            } catch (error) {
+                console.error('Error fetching logged in status:', error);
+            }
+        };
+        fetchLoggedInStatus();
+    }, []);
+    const logout = (e) =>{
+        e.preventDefault()
+        Axios.get('http://localhost:3001/auth/logout', { withCredentials: true })
+        .then(result => {
+            if(result.data.status){
+                // const response = Axios.get('http://localhost:3001/auth/section', { withCredentials: true });
+                // setLoggedIn(response.data.loggedIn);
+                alert(result.data.message)
+                navigate('/home')
+                navigate(0)
+            }
+          })
+          .catch(err => console.log(err))
+    }
+
     return (
         <div className="navbar bg-success rounded-lg">
             <div className="flex-1">
@@ -17,7 +41,7 @@ function Navbar() {
             </div>
             <div className="flex-none font-bold">
                 <ul className="menu menu-horizontal px-1">
-                <li><Link to="/home">Home</Link></li>
+                    <li><Link to="/home">Home</Link></li>
                     <li><Link to="/product">Product</Link></li>
                     <li>
                         <details>
@@ -31,8 +55,13 @@ function Navbar() {
                         </details>
                     </li>
                     <li><Link to="/contact">Contact</Link></li>
-                    
-                    <li><Link to="/login"><button className="btn btn-sm btn-primary text-active">Login</button></Link></li>
+                    {
+                        loggedIn
+
+                            ? <li><Link to="/home"><button onClick={logout} className="btn btn-sm btn-primary text-active">Logout</button></Link></li>
+                            : <li><Link to="/login"><button className="btn btn-sm btn-primary text-active">Login</button></Link></li>
+                    }
+
                 </ul>
             </div>
         </div>

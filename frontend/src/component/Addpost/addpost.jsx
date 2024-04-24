@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
-import Axios from '../../../../backend/node_modules/axios'
+import Axios from 'axios'
 
 function Addpost() {
   const [title, setTitle] = useState()
