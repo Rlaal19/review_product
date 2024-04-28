@@ -35,7 +35,7 @@ const Navbar = () => {
     }
 
     return (
-        <div className="navbar bg-success rounded-lg">
+        <div className="navbar bg-success rounded-lg ">
             <div className="flex-1">
                 <a className="btn btn-ghost text-xl">Rlaal^^</a>
             </div>
@@ -48,7 +48,7 @@ const Navbar = () => {
                             <summary>
                                 Post
                             </summary>
-                            <ul className="p-2 bg-success rounded-t-none">
+                            <ul className="p-2 bg-success rounded-t-none z-40">
                                 <li><Link to="/showpost">Showpost</Link></li>
                                 <li><Link to="/post">สร้างกระทู้</Link></li>
                             </ul>

@@ -1,10 +1,10 @@
 const express = require('express')
 const bcrypt = require('bcrypt')
-const jwt = require('jsonwebtoken')
+const multer = require('multer')
 const EmployeeModel = require('../models/Employee')
 const PostModel = require('../models/Addpost')
 const UserRounter = express.Router()
-const redirectIfAuth = require('../middleware/redirectIfAuth')
+
 
 UserRounter.post('/register', async (req, res) => {
     const{name,email,password} =req.body
@@ -22,13 +22,15 @@ UserRounter.post('/register', async (req, res) => {
 
 UserRounter.post('/login', async (req, res) => {
     const { email, password } = req.body;
+    // const user = await EmployeeModel.findOne({ email:email })
     EmployeeModel.findOne({ email:email }).then((user) =>{
         if (user) {
             let cmp = bcrypt.compare(password,user.password).then((match) =>{
                 if(match){
                     req.session.userId = user
-                    console.log(req.session.userId)
-                    // res.render('home')
+                    req.session.name = user.name
+                    // console.log("name: ",req.session.name)
+
                     return res.json({ status: true, message: "Login successfully"})
                 }
                 else{
@@ -43,8 +45,6 @@ UserRounter.post('/login', async (req, res) => {
 
 UserRounter.get("/section", async(req, res) => {
     const loggedIn = req.session.userId ? true : false;
-    console.log("Section")
-    console.log(req.session.userId)
     // const loggedIn = true;
     res.json({ loggedIn });
 });
@@ -57,17 +57,50 @@ UserRounter.get("/logout", (req, res) => {
 
 UserRounter.get('/home', async(req,res) =>{
     const Userdata = await EmployeeModel.findById(req.session.userId)
-    console.log(Userdata)
     res.json({Userdata})
 })
 
-UserRounter.post('/post', (req, res) => {
-    // let Userdata = await EmployeeModel.findById(req.session.userId)
-   PostModel.create(req.body)
-   .then(post => res.json(post))
-   .catch(err => res.json(err))
+// const stroge = multer.diskStorage({
+//     destination: (req,file, cb)=>{
+//         cb(null,'../public/Images')
+//     },
+//     filename: (req,file,cb) =>{
+//         const filedate = Date.now()
+//         cb(null, filedate + file.originalname)
+//     }
+// })
+
+// const upload = multer({
+//     stroge: stroge
+// })
+
+UserRounter.post('/post', async(req, res) => {
+    const {title, descript,userData} = req.body
+    console.log(userData.Userdata.name)
+    console.log(title)
+    console.log(descript)
+    // const image = req.file.filename;
+    try{
+        if(userData.Userdata.name && title && descript){
+            // console.log(image)
+            await PostModel.create({
+                user: userData.Userdata.name,
+                title: title, 
+                descript: descript})
+            res.json({status:true, message: "Post success"})
+        }else{
+            res.json({status:false, message: "Plase login"})
+        }
+
+    }catch(err){
+        res.json({status: err})
+    }
 
 })
-
+UserRounter.get('/showpost', async(req,res) =>{
+    const Postdata = await PostModel.find()
+    console.log(Postdata)
+    // res.json(Postdata)
+})
 
 module.exports = UserRounter

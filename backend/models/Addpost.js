@@ -1,9 +1,10 @@
 const mongoose = require('mongoose')
 
 const PostSchema = new mongoose.Schema({
-    name:String,
-    title: String,
-    descript:String 
+    user:String,
+    title:String,
+    descript:String,
+    image:String
 })
 
 const PostModel = mongoose.model("post", PostSchema)
