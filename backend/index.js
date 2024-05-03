@@ -6,7 +6,6 @@ const expressSession = require('express-session')
 const UserRounter = require("./rount/user")
 
 mongoose.connect("mongodb+srv://admin:2319@cluster0.kdh9hcl.mongodb.net/system-reviewproduct");
-const loggedIn = null
 
 
 const app = express()

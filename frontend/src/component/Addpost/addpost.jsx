@@ -4,19 +4,11 @@ import Axios from 'axios'
 
 function Addpost() {
   const [title, setTitle] = useState()
-  const [descript ,setDescript] = useState()
-  const [file, setFile] = useState()
+  const [descript, setDescript] = useState()
   const navigate = useNavigate()
-  
-  const handleSubmit = async(e) =>{
+  const handleSubmit = (e) =>{
     e.preventDefault()
-    // const formdata = new FormData()
-    // formdata.append('file', file)
-    const response = await Axios.get('http://localhost:3001/auth/home', { withCredentials: true });
-    const userData = response.data
-    console.log(userData)
-    Axios.post('http://localhost:3001/auth/post',{title, descript,userData})
-    
+    Axios.post('http://localhost:3001/auth/post',{title,descript})
     .then(result => {console.log(result)
       if(result.data.status){
         alert(result.data.message)
@@ -43,10 +35,6 @@ function Addpost() {
           <textarea id='descript' placeholder="รายละเอียด" className="textarea textarea-bordered textarea-md w-full max-w-xl :"
             onChange={(e) => setDescript(e.target.value)} 
           />
-          {/* <div>Image</div> */}
-          {/* <input type="file" accept='.jpeg, .png, .jpg, .svg' className="file-input file-input-borde w-full max-w-xs"
-            onChange={(e) => setFile(e.target.files[0])}
-          /> */}
         </div>
         <button className=" ml-28 mt-5 mb-60 btn btn-accent ">Submit</button>
       </form>

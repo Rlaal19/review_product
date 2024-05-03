@@ -2,7 +2,6 @@ import "./homepage.css"
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import Axios from '../../../../backend/node_modules/axios'
-import Footer from "../footer";
 
 
 let homeData = {
