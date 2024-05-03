@@ -13,12 +13,12 @@ const Contentcontrainer = ({
     const SECTION_ID =`${sectionTitle}_section`
     return (
       <div id={SECTION_ID}>
-        <div>{sectionTitle}</div>
+        <div className=' font-serif font-bold text-lg'>{sectionTitle}</div>
         {
           data.map(({score,title,description,shoplink,picture}, index) => (
             <div
             key ={`${SECTION_ID}-${index}`}
-              className={`grid grid-cols-[27%_73%] transition-all rounded-lg py-5 ${isMouseEnter[`${SECTION_ID}-${index}`] ? "bg-pink-200 bg-opacity-75 " : ""} `}
+              className={`grid grid-cols-[27%_73%] transition-all rounded-lg py-5 ${isMouseEnter[`${SECTION_ID}-${index}`] ? "bg-gray-300 bg-opacity-75 " : ""} `}
               onMouseEnter={() => setIsMouseEnter({ [`${SECTION_ID}-${index}`]: true })}
               onMouseLeave={() => setIsMouseEnter({ [`${SECTION_ID}-${index}`]: false })}
             >
@@ -29,7 +29,7 @@ const Contentcontrainer = ({
                 </div>
                 <Picture picture={picture} />
               </div>
-              <div className='grid gap-3'>
+              <div className=' font-semibold grid gap-3'>
                 <Productname title={title} />
                 {
                   description.map((e,i)=>(

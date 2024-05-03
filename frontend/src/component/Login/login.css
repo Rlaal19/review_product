@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 *{
-    margin: 2;
+    margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
@@ -12,7 +12,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    min-height: 98vh;
     
 }
 .wrapper h1{
@@ -38,7 +38,12 @@
     display: flex;
     justify-content: space-between;
     font-size: 15px;
-    margin-bottom: 10px;
+    margin-bottom: 16px;
+}
+.wrapper .signup-btn{
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 5px;
 }
 .wrapper .register-link{
     text-align: center;

@@ -12,7 +12,7 @@ const contactData = {
 function Footer() {
     return (
         <div className=' mt-32'>
-            <footer className="footer items-center p-3 bg-neutral text-neutral-content">
+            <footer className="footer items-center p-3 bg-gray-400 text-white">
                 <aside className="items-center grid-flow-col">
                 <FontAwesomeIcon className=' text-4x text-5xl' icon={faHashtag} />
                 <p className='text-md'>Copyright © 2024 - All right reserved</p>

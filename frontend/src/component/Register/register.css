@@ -41,8 +41,9 @@
     bottom: 10px;
 }
 .wrapper .signup-btn{
-    text-align: center;
+    margin-right: 10px;
     margin-top: 10px;
+    margin-bottom: 5px;
 }
 .wrapper .register-link{
     text-align: center;

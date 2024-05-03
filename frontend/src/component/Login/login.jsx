@@ -49,7 +49,9 @@ const Login = () => {
           <label><input type="checkbox"  />Remember me </label>
           <Link to="/forgotPassword">Forgot Password</Link>
         </div>
-        <button className="btn btn-neutral">Login</button>
+        <div className='signup-btn'>
+          <button className="btn btn-neutral">Login</button>
+        </div>
 
         <div className='login-link'>
         <p>Don't have an account? <Link className=' text-blue-800' to="/register">Register</Link> </p>
