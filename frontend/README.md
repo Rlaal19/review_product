@@ -42,3 +42,9 @@ Currently, two official plugins are available:
    npm i --save @fortawesome/free-brands-svg-icons
 
 3. npm i --save @fortawesome/react-fontawesome@latest
+
+back end
+- npm i express express-session nodemon mongoose
+
+front end
+- npm i react-router-dom 
