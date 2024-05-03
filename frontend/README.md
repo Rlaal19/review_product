@@ -47,4 +47,4 @@ back end
 - npm i express express-session nodemon mongoose
 
 front end
-- npm i react-router-dom 
+- npm i react-router-dom axios
