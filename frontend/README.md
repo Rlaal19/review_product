@@ -44,7 +44,7 @@ Currently, two official plugins are available:
 3. npm i --save @fortawesome/react-fontawesome@latest
 
 back end
-- npm i express express-session nodemon mongoose
+- npm i express express-session nodemon mongoose bcrypt cors
 
 front end
 - npm i react-router-dom axios
