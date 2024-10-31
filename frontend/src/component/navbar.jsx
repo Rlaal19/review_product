@@ -45,7 +45,14 @@ const Navbar = () => {
             <div className="flex-none font-bold ">
                 <ul className="menu menu-horizontal px-1">
                     <li><Link to="/home" >Home</Link></li>
-                    <li><Link to="/product">Product</Link></li>
+                    <div className="dropdown dropdown-hover">
+                        <div tabIndex={0} role="button" className="pt-1 btn btn-sm btn-ghost text-md font-bold">Product</div>
+                        <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-gray-400 bg-opacity-50 rounded-box w-52">
+                            <li><Link to="/product">Product</Link></li>
+                            <li><Link to="/addgroup">Addgroup</Link></li>
+                            <li><Link to="/addproduct">Addproduct</Link></li>
+                        </ul>
+                    </div>
                     <div className="dropdown dropdown-hover">
                         <div tabIndex={0} role="button" className="pt-1 btn btn-sm btn-ghost text-md font-bold">Post</div>
                         <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-gray-400 bg-opacity-50 rounded-box w-52">

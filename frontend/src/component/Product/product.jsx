@@ -10,26 +10,8 @@ import {data as snack} from '../../dataproduct/snack'
 const Product = () => {
   return(
    <div className='grid gap-5'>
-     <Contentcontrainer
-      title='Skincare'
-      data={skincare} 
-      />
-      <Contentcontrainer
-      title='Cosmetic'
-      data={cosmetic}
-      />
-      <Contentcontrainer
-      title='Hair'
-      data={hair}
-      />
-      <Contentcontrainer
-      title='Fashion'
-      data={fashion}
-      />
-      <Contentcontrainer
-      title='Snack'
-      data={snack}
-      />
+     <Contentcontrainer/>
+     
    </div>
   )
 }

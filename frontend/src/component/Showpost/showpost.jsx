@@ -30,10 +30,7 @@ function Showpost() {
                 </div>
               </div>
             })
-          }
-
-          
-        
+          }    
 
     </div>
   )

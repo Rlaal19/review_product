@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const cors = require('cors')
 const expressSession = require('express-session')
 const UserRounter = require("./rount/user")
+const AdminRounter = require("./rount/admin")
 
 // เชื่อม DB
 mongoose.connect("mongodb+srv://admin:2319@cluster0.kdh9hcl.mongodb.net/system-reviewproduct");
@@ -24,6 +25,7 @@ app.use(cors({
 
 // เชื่อม rount
 app.use("/auth", UserRounter)
+app.use("/admin", AdminRounter)
 
 
 

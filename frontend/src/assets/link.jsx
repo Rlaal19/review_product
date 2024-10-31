@@ -1,8 +1,9 @@
 
-const Pink = ({code,link}) => {
+const Pink = ({shopee,lazada}) => {
   return (
     <div className=''>
-        <a href={link} target='blank'><button className="btn bg-yellow-100">{code}</button></a>
+        <a href={shopee} target='blank'><button className="btn bg-yellow-100">SHOPEE</button></a>
+        <a href={lazada} target='blank'><button className="btn bg-yellow-100">LAZADA</button></a>
     </div>
   )
 }

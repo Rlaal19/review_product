@@ -24,3 +24,8 @@ back end
 
 front end
 - npm i react-router-dom axios daisyui
+
+run backend ต้องเข้า path ก่อน
+-  node index.js  
+run frontend ต้องเข้า path ก่อน
+- npm run dev

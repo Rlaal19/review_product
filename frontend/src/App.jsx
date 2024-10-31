@@ -10,6 +10,8 @@ import Login from './component/Login/login'
 import Register from './component/Register/register'
 import Homepage from './component/Homepage/homepage'
 import Forgotpassword from './component/Forgotpassword/forgotpassword';
+import Addgroup from './component/Addgroup/addgroup';
+import Addproduct from './component/Addproduct/addproduct';
 import './App.css'
 
 function App() {
@@ -31,6 +33,8 @@ function App() {
               <Route path="login" element={<Login />} />
               <Route path="register" element={<Register />} />
               <Route path="forgotPassword" element={<Forgotpassword />} />
+              <Route path="addgroup" element={<Addgroup />} />
+              <Route path="addproduct" element={<Addproduct />} />
           </Route>
         </Routes>
       </BrowserRouter>
